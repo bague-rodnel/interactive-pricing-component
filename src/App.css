@@ -223,6 +223,10 @@ h6,
   .pricing {
     background-size: 100% min(56%, 449px);
   }
+
+  .section-introduction {
+    margin-top: 0;
+  }
   .pricing__heading {
     font-size: calc(1.3rem + 0.6vw);
   }
