@@ -1,38 +1,255 @@
-.App {
-  text-align: center;
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@600;800&display=swap");
+
+*,
+::after,
+::before {
+  padding: 0;
+  margin: 0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+:root {
+  --c-light-cyan: hsl(174, 77%, 80%);
+  --c-strong-cyan: hsl(174, 86%, 45%);
+  --c-dark-cyan: hsl(174, 66%, 41%);
+  --c-light-red: hsl(14, 92%, 95%);
+  --c-primary-red: hsl(15, 100%, 70%);
+  --c-pale-blue: hsl(226, 100%, 87%);
+
+  --c-white: hsl(0, 0%, 100%);
+  --c-very-pale-blue: hsl(230, 100%, 99%);
+  --c-light-grayish-blue: hsl(224, 65%, 95%);
+  --c-grayish-text: hsl(225, 20%, 60%);
+  --c-dark-text: hsl(227, 35%, 25%);
+
+  --fw-regular: 600;
+  --fw-bold: 800;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+body {
+  font-family: "Manrope", sans-serif;
+  font-size: 15px;
+  font-weight: var(--fw-regular);
+  background-color: var(--c-very-pale-blue);
+  color: var(--c-grayish-text);
 }
 
-.App-header {
-  background-color: #282c34;
+/* ============== BOOTSTRAP OVERRIDES ================= */
+p {
+  margin-bottom: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.heading {
+  font-weight: var(--fw-bold);
+  color: var(--c-dark-text);
+}
+
+.card-body {
+  /* padding: 36px 24px; */
+  padding: 24px;
+}
+
+.form-switch {
+  height: 22px;
+}
+
+.form-switch .form-check-input:hover {
+  background-color: var(--c-light-cyan);
+  cursor: pointer;
+}
+.form-switch .form-check-input {
+  border: none;
+  background-color: rgb(205, 215, 238);
+  background-image: url(/public/images/toggle-circle.svg);
+  height: 22px;
+  width: 44px;
+  margin-top: 0;
+}
+
+.form-switch .form-check-input:focus {
+  border-color: hsl(174, 86%, 45%);
+  background-image: url(/public/images/toggle-circle.svg);
+  box-shadow: none;
+}
+.form-switch .form-check-input:checked {
+  background-color: hsl(174, 86%, 45%);
+  border-color: hsl(174, 86%, 45%);
+}
+/* ================= REUSABLES ================ */
+.h-100 {
+  height: 100%;
+}
+.flex-row-middle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-body__content {
+  width: 100%;
+}
+
+/* ================= APP STYLES ================= */
+.pricing {
+  background-color: var(--c-very-pale-blue);
+  background-image: url(/public/images/bg-pattern.svg);
+  background-repeat: no-repeat;
+  background-size: 100% 50%;
+  overflow: auto;
   min-height: 100vh;
+  text-align: center;
+  display: grid;
+  place-items: center;
+}
+
+.section-introduction {
+  background-image: url(/public/images/pattern-circles.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  margin: 2rem 0;
+  padding: 1.8rem 0;
+}
+
+.pricing__heading {
+  font-size: calc(1.275rem + 0.3vw);
+}
+
+.card {
+  position: relative;
+  width: 327px;
+  height: 478px;
+  border: none;
+  border-radius: 10px;
+  background-color: white;
+  box-shadow: 0 1rem 1rem -0.25rem var(--c-light-grayish-blue);
+  margin: 0 auto;
+}
+
+.card__upper-body {
+  height: 277px;
+  flex-grow: 0;
+  display: grid;
+  place-items: center;
+}
+
+.pricing__pageviews {
+  text-transform: uppercase;
+  font-weight: var(--fw-bold);
+}
+
+.pricing__rate {
+  color: var(--c-dark-text);
+  font-weight: var(--fw-bold);
+  margin-bottom: 0;
+  margin-right: 0.33rem;
+}
+
+.pricing__billing-options {
+  margin-top: 36px;
+  font-size: 12px;
+}
+
+.pricing .billing {
+  width: 100px;
+}
+
+.pricing .yearly-billing {
+  position: relative;
+}
+
+.pricing .yearly-badge,
+.pricing .yearly-savings {
+  position: absolute;
+  border-radius: 500px;
+  background-color: hsl(14, 92%, 95%);
+  color: hsl(15, 100%, 70%);
+}
+
+.pricing .yearly-savings {
+  top: 100%;
+  background-color: transparent;
+}
+
+.card__hr {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  left: 0;
+}
+
+.pricing .perks {
+  padding: 0;
+  margin: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  font-size: 12px;
+}
+
+.pricing .perks__entry {
+  margin: 0.25rem 0;
+  padding: 0 0 0 1em;
+  position: relative;
+}
+
+.pricing .perks__entry::marker {
+  content: url(/public/images/icon-check.svg);
+}
+
+.card__cta {
+  background-color: hsl(227, 35%, 25%);
+  color: hsl(226, 100%, 87%);
+  border-radius: 500px;
+  padding-left: 2.8rem;
+  padding-right: 2.8rem;
+  margin: 0 auto 0.5rem;
+  font-size: 12px;
+  height: 40px;
+  display: block;
+}
+
+.card__cta:hover {
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+@media (min-width: 992px) {
+  .pricing {
+    background-size: 100% min(56%, 449px);
   }
-  to {
-    transform: rotate(360deg);
+  .pricing__heading {
+    font-size: calc(1.3rem + 0.6vw);
+  }
+  .card {
+    width: 540px;
+    height: 397px;
+  }
+
+  .card-body {
+    padding-left: 44px;
+    padding-right: 44px;
+  }
+
+  .card__upper-body {
+    height: 261px;
+  }
+
+  .pricing .yearly-badge {
+    margin-left: 0.5rem;
+  }
+
+  .pricing .perks__entry {
+    width: 100%;
+    text-align: left;
+  }
+
+  .card__cta {
+    margin: 0 0 0.5rem auto;
   }
 }
